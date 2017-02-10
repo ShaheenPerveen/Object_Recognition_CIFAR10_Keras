@@ -5,4 +5,4 @@
 - Used ReLU and softmax
 - Used SGD and Adadelta for optimization
 - Achieved an accuracy of 81.95% on test data by using sgd and softmax
-- Improved the accuracy to 99.39% by data augmentation
+
