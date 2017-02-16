@@ -167,6 +167,21 @@ def cnn_model():
 
 model5 = cnn_model()
 
+##
+model5.compile(loss='categorical_crossentropy',
+          optimizer='adam',
+          metrics=['accuracy'])
+
+nb_epoch =50
+batch_size = 128
+model5.fit(X_train, y_train, validation_data=(X_test, y_test), batch_size=batch_size, nb_epoch=nb_epoch)
+
+# In[]:
+
+# Final evaluation of the model
+scores = model5.evaluate(X_test, y_test, verbose=0)
+print("Accuracy: %.2f%%" % (scores[1]*100))
+
 
 
 
