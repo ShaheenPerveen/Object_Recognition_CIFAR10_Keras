@@ -126,7 +126,48 @@ scores = model2.evaluate(X_test, y_test, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
 
 
-# In[ ]:
+##
+## attempt with leaky Relu
+from keras.layers.advanced_activations import LeakyReLU
+
+# Reinstallise models 
+img_size = 32
+
+def cnn_model():
+    model = Sequential()
+    model.add(Convolution2D(32, 3, 3, border_mode='same', input_shape=(3, img_size, img_size), activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(32, 3, 3, activation='relu',border_mode='same'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    #model.add(Dropout(0.2))
+    
+    model.add(Convolution2D(64, 3, 3, border_mode='same', activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(64, 3, 3, activation='relu',border_mode='same'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    #model.add(Dropout(0.2))
+
+    model.add(Convolution2D(128, 3, 3, border_mode='same', activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Convolution2D(128, 3, 3, activation='relu',border_mode='same'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    #model.add(Dropout(0.2))
+
+    model.add(Flatten())
+    model.add(Dropout(0.2))
+    model.add(Dense(1024, W_constraint=maxnorm(3)))
+    model.add(LeakyReLU(alpha=0.01))
+    model.add(Dropout(0.2))
+    model.add(Dense(512, W_constraint=maxnorm(3)))
+    model.add(LeakyReLU(alpha=0.01))
+    model.add(Dropout(0.2))
+    model.add(Dense(num_classes, activation='softmax'))
+    return model
+
+
+model5 = cnn_model()
+
+
 
 
 
