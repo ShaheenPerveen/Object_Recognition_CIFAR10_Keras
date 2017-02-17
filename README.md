@@ -5,4 +5,5 @@
 - Used ReLU and softmax
 - Used SGD and Adadelta for optimization
 - Achieved an accuracy of 81.95% on test data by using sgd and softmax
+- Kaggle competition similar to the problem - https://www.kaggle.com/c/cifar-10
 
