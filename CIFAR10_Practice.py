@@ -1,7 +1,6 @@
 
 # coding: utf-8
 
-# In[3]:
 
 import numpy as np
 import pandas as pd
@@ -27,13 +26,11 @@ import os
 import re
 
 
-# In[4]:
 
 # load data
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
 
 
-# In[5]:
 
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
