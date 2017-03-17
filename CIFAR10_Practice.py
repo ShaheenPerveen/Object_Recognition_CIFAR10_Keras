@@ -31,14 +31,11 @@ import re
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
 
 
-
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
 X_train = X_train / 255.0
 X_test = X_test / 255.0
 
-
-# In[6]:
 
 
 # one hot encode outputs
@@ -46,8 +43,6 @@ y_train = np_utils.to_categorical(y_train)
 y_test = np_utils.to_categorical(y_test)
 num_classes = y_test.shape[1]
 
-
-# In[9]:
 
 # Reinstallise models 
 img_size = 32
